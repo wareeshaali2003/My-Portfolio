@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApplication5.Models.Project>
+@{
+    ViewBag.Title = "Projects";
+}
+
+<h2 class="text-center mb-5">🚀 My Projects</h2>
+
+<div class="row">
+    @foreach (var project in Model)
+    {
+        <div class="col-md-4">
+            <div class="card project-card shadow-lg mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">@project.Title</h5>
+                    <p class="card-text">@project.Description</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        background: #f9f9f9;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h2 {
+        font-weight: bold;
+        color: #2c3e50;
+    }
+
+    .project-card {
+        border: none;
+        border-radius: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: white;
+    }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card .card-title {
+            color: #007bff;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card .btn {
+            border-radius: 20px;
+            padding: 6px 15px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+            .project-card .btn:hover {
+                background: #0056b3;
+                color: #fff;
+            }
+</style>

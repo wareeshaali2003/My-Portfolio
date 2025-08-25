@@ -1,0 +1,106 @@
+﻿@model WebApplication5.Models.ContactMessage
+@{
+    ViewBag.Title = "Contact";
+}
+
+<div class="text-center mb-5">
+    <h2 class="display-5 fw-bold text-primary">📩 Get in Touch</h2>
+    <p class="text-muted">Feel free to drop me a message anytime!</p>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg rounded-3 p-4">
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "contactForm" }))
+                {
+                    <div class="form-group mb-3">
+                        @Html.LabelFor(m => m.Name, new { @class = "fw-bold" })
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter your full name" })
+                    </div>
+
+                    <div class="form-group mb-3">
+                        @Html.LabelFor(m => m.Email, new { @class = "fw-bold" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email address" })
+                    </div>
+
+                    <div class="form-group mb-3">
+                        @Html.LabelFor(m => m.Message, new { @class = "fw-bold" })
+                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder = "Write your message...", rows = "5" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 btn-lg shadow-sm">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                }
+            </div>
+
+            @if (ViewBag.Response != null)
+            {
+                <div id="successMessage" class="alert alert-success mt-4 shadow-sm animate__animated animate__fadeIn">
+                    ✅ @ViewBag.Response
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: #f9fafc;
+    }
+
+    .card {
+        border: none;
+        background: #fff;
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 12px;
+    }
+
+    .btn-primary {
+        border-radius: 10px;
+    }
+
+    #successMessage {
+        font-weight: bold;
+        border-radius: 8px;
+    }
+</style>
+
+<script>
+   document.getElementById("contactForm").addEventListener("submit", function (event) {
+    let name = document.getElementById("Name").value.trim();
+    let email = document.getElementById("Email").value.trim();
+    let message = document.getElementById("Message").value.trim();
+
+    if (name === "" || email === "" || message === "") {
+        event.preventDefault();
+        alert("⚠️ Please fill in all fields before submitting.");
+        return;
+    }
+
+    let nameRegex = /^[A-Za-z\s]+$/;
+    if (!nameRegex.test(name)) {
+        event.preventDefault();
+        alert("⚠️ Name should only contain letters (no numbers or special characters).");
+        return;
+    }
+
+    if (!email.includes('@@') || !email.endsWith('.com')) {
+        event.preventDefault();
+        alert('⚠️ Please enter a valid email address (must contain @@ and end with .com)');
+        return;
+    }
+});
+
+
+</script>
+

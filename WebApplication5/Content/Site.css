@@ -1,0 +1,24 @@
+﻿/* Smooth hover effects */
+.btn-lg {
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-lg:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+/* Animate profile picture */
+.rounded-circle {
+    transition: transform 0.5s ease-in-out;
+}
+
+    .rounded-circle:hover {
+        transform: scale(1.05);
+    }
+
+/* Jumbotron styling */
+.jumbotron {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 20px;
+}

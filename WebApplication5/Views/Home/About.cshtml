@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "About Me";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #f9f9f9, #e3f2fd);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .about-container {
+        background: #fff;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease;
+    }
+
+        .about-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+    .profile-pic {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        transition: 0.3s ease;
+    }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+    h1 {
+        font-weight: bold;
+        color: #0d47a1;
+    }
+
+    .lead {
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    hr {
+        border-top: 2px solid #0d47a1;
+        width: 60px;
+        margin-left: 0;
+    }
+
+    
+
+        }
+</style>
+
+<div class="container mt-5">
+    <div class="row align-items-center about-container">
+        <!-- Left: Profile Picture -->
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+            <img src="~/Content/picture/images.jfif" class="profile-pic" alt="Profile Picture" />
+        </div>
+
+        <!-- Right: About Me Text -->
+        <div class="col-md-8">
+            <h1 class="mb-3">About Me</h1>
+            <p class="lead">
+                Hello! I'm <b>Syeda Wareesha Ali</b>, an aspiring software developer.
+            </p>
+            <hr />
+
+            <p>
+                I am passionate about crafting high-quality web applications using modern
+                technologies. My core skills include <b>ASP.NET MVC, C#, SQL Server, and Bootstrap</b>.
+                I believe in continuous learning and love tackling real-world challenges with code.
+            </p>
+            <div class="mt-4">
+                <a href="~/Content/Resume/WareeshaResume .pdf" target="_blank" class="btn btn-primary">
+                    📄 View My Resume
+                </a>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
