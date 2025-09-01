@@ -12,9 +12,15 @@ namespace WebApplication5.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class OrderDetail
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int OrderDetailId { get; set; }
+        public Nullable<int> OrderId { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<decimal> Price { get; set; }
+    
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

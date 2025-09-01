@@ -12,9 +12,9 @@ namespace WebApplication5.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class Skill
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string SkillName { get; set; }
     }
 }

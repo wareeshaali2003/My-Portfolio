@@ -13,10 +13,10 @@ namespace WebApplication5.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ZABCEntities : DbContext
+    public partial class ZABCEntities1 : DbContext
     {
-        public ZABCEntities()
-            : base("name=ZABCEntities")
+        public ZABCEntities1()
+            : base("name=ZABCEntities1")
         {
         }
     
@@ -25,15 +25,21 @@ namespace WebApplication5.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
         public DbSet<ContactMessage> ContactMessages { get; set; }
         public DbSet<CUSTOMER> CUSTOMERs { get; set; }
+        public DbSet<Experience> Experiences { get; set; }
+        public DbSet<Hobby> Hobbies { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<PersonalInfo> PersonalInfoes { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Skill> Skills { get; set; }
         public DbSet<T1> T1 { get; set; }
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<PERSON> People { get; set; }
     }
 }

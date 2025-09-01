@@ -12,12 +12,9 @@ namespace WebApplication5.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CartItem
+    public partial class Hobby
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
-        public int Quantity { get; set; }
-    
-        public virtual Product Product { get; set; }
+        public string Hobby1 { get; set; }
     }
 }

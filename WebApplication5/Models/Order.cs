@@ -14,8 +14,17 @@ namespace WebApplication5.Models
     
     public partial class Order
     {
-        public int Id { get; set; }
-        public string UserId { get; set; }
-        public System.DateTime OrderDate { get; set; }
+        public Order()
+        {
+            this.OrderDetails = new HashSet<OrderDetail>();
+        }
+    
+        public int OrderId { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<System.DateTime> OrderDate { get; set; }
+        public string Status { get; set; }
+    
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual User User { get; set; }
     }
 }

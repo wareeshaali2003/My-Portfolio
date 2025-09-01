@@ -5,38 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="@Url.Content("~/Content/fontawesome/css/all.min.css")" />
+
+
     @Scripts.Render("~/bundles/modernizr")
+
+
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow hero-navbar">
         <div class="container">
-            @Html.ActionLink("My-Portfolio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Brand -->
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center fw-bold text-info fs-4" href="@Url.Action("Index", "Home")">
+                <img src="~/Content/picture/new.jfif" alt="Profile"
+                     class="rounded-circle me-2" style="width:35px; height:35px; object-fit:cover;">
+                <span>My-Portfolio</span>
+            </a>
+
+
+
+            <!-- Toggler for mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Projects", "Projects", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Skills", "Skills", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                  
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link cool-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link cool-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Projects", "Projects", "Home", new { area = "" }, new { @class = "nav-link cool-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Skills", "Skills", "Home", new { area = "" }, new { @class = "nav-link cool-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Contact", "Contact", "Home", new { area = "" },
+                            new { @class = "nav-link cool-link" })
+                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Custom CSS -->
+    <style>
+        /* Glassmorphism + Gradient */
+        .hero-navbar {
+            background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(30,30,30,0.85));
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 2rem; /* bada size */
+            font-weight: 800; /* extra bold */
+            letter-spacing: 1px; /* thoda space between letters */
+            text-transform: uppercase; /* ALL CAPS */
+            background: linear-gradient(90deg, #00c6ff, #ffd700); /* gradient text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* gradient text ke liye */
+            transition: transform 0.3s ease;
+        }
+
+            .navbar-brand:hover {
+                transform: scale(1.05); /* hover pe thoda zoom */
+            }
+
+        /* Navbar links aesthetic effect */
+        /* Navbar links aesthetic effect */
+        .nav-link {
+            position: relative;
+            font-weight: 600; /* thoda bold */
+            font-style: italic; /* italic look */
+            color: #ffffff !important; /* text ko white force kar diya */
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+            .nav-link:hover {
+                color: #00d4ff !important; /* hover pe blue hi rahe */
+            }
+
+
+        /* Cool underline effect */
+        .cool-link::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background-color: #00d4ff;
+            transition: width 0.3s;
+        }
+
+        .cool-link:hover::after {
+            width: 100%;
+        }
+    </style>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - All rights reserved by Wareesha Ali</p>
-        </footer>
+
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <!-- jQuery, Bootstrap and Custom Scripts -->
+    <script src="~/Scripts/jquery-3.6.0.min.js" defer></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js" defer></script>
+    <script src="~/Scripts/site.js" defer></script>
+    @section Scripts {
+        <script src="~/Scripts/contact-form.js" defer></script>
+    }
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

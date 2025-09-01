@@ -2,73 +2,192 @@
     ViewBag.Title = "Skills & Services";
 }
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">💻 My Skills & Services</h2>
-    <p class="text-center text-muted mb-5">Here are the technologies, tools, and services I work with.</p>
+<style>
+    body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+    }
 
-  
-    <div class="row mb-5">
-        <div class="col-md-12">
-            <h3 class="mb-3">🚀 Technical Skills</h3>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">ASP.NET MVC / .NET Core</li>
-                <li class="list-group-item">C# & Object-Oriented Programming</li>
-                <li class="list-group-item">SQL Server / MySQL (Database Design & Queries)</li>
-                <li class="list-group-item">Entity Framework (Code First & DB First)</li>
-                <li class="list-group-item">JavaScript, jQuery, Bootstrap</li>
-                <li class="list-group-item">AI/ML with Python (Scikit-learn, TensorFlow basics)</li>
-            </ul>
-        </div>
+    .skill-heading {
+    font-size: 2.5rem;      
+    font-weight: 700;      
+    color: #00d4ff;          
+    text-transform: uppercase; 
+    letter-spacing: 2px;     
+    position: relative;
+    display: inline-block;   
+    padding-bottom: 8px;
+     
+    }
+
+        .skill-heading::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, #00c6ff, #ffd700);
+            border-radius: 2px;
+        }
+
+    /* Main Container */
+    .skills-container {
+        background: rgba(20, 22, 25, 0.75);
+        backdrop-filter: blur(14px);
+        border-radius: 25px;
+        padding: 60px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.75);
+        transition: 0.3s ease;
+        color: #ffffff;
+    }
+
+        .skills-container p {
+            text-align: center;
+            color: #adb5bd;
+            margin-bottom: 50px;
+        }
+
+    .section-heading {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        color: #00d4ff;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        position: relative;
+        display: inline-block;
+    }
+
+       
+
+    /* Skills Pills */
+    .skills span {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        color: #f8f9fa;
+        padding: 10px 16px;
+        margin: 6px;
+        border-radius: 20px;
+        font-size: 0.95rem;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+        cursor: default;
+    }
+
+
+    /* Cards for Services */
+    .card-deck {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card {
+        background: rgba(33, 37, 41, 0.8);
+        border-radius: 18px;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.7);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        flex: 1 1 280px;
+        max-width: 320px;
+        text-align: center;
+    }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0px 0px 40px rgba(0, 198, 255, 0.8);
+        }
+
+        .card h5 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .card p {
+            color: #adb5bd;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+        
+</style>
+
+    <div class="text-center mb-5">
+        <h2 class="skill-heading">💻 My Skills & Services</h2>
+        <p class="text-muted" style="font-size:1.1rem;">Technologies, tools & expertise I bring to the table </p>
+    </div>
+    <!-- Technical Skills -->
+    <h3 class="section-heading">🚀 Programming Languages & Technical Skills</h3>
+    <div class="skills mb-4">
+        <span>ASP.NET</span>
+        <span>.NET Core</span>
+        <span>C#</span>
+        <span>Java</span>
+        <span>Python</span>
+        <span>Django</span>
+        <span>JavaScript</span>
+        <span>Scala</span>
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>Bootstrap</span>
+        <span>JSON</span>
+        <span>Chisel</span>
+        <span>SystemVerilog</span>
+        <span>MySQL</span>
+        <span>OOP Concepts</span>
+        <span>Database Design</span>
+        <span>Web Development</span>
     </div>
 
-    <div class="row mb-5">
-        <div class="col-md-12">
-            <h3 class="mb-3">🛠 Tools & Frameworks</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <ul class="list-group">
-                        <li class="list-group-item">Visual Studio / VS Code</li>
-                        <li class="list-group-item">Git & GitHub</li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-group">
-                        <li class="list-group-item">Postman (API Testing)</li>
-                        <li class="list-group-item">Figma / Canva (UI Design basics)</li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-group">
-                        <li class="list-group-item">Docker (Basic)</li>
-                        <li class="list-group-item">Jira / Trello</li>
-                    </ul>
-                </div>
+    <!-- Tools & Software -->
+    <h3 class="section-heading">🛠 Tools & Software</h3>
+    <div class="skills mb-4">
+        <span>Visual Studio / VS Code</span>
+        <span>Git & GitHub</span>
+        <span>Django</span>
+        <span>Streamlit</span>
+        <span>Docker (Basic)</span>
+        <span>OpenAI Playground</span>
+        <span>Scikit-learn</span>
+        <span>.NET Frameworks</span>
+        <span>Postman</span>
+        <span>Figma / Canva</span>
+        <span>Jira / Trello</span>
+    </div>
+
+    <!-- Soft Skills -->
+    <h3 class="section-heading">💡 Soft Skills</h3>
+    <div class="skills mb-4">
+        <span>Communication</span>
+        <span>Team Collaboration</span>
+        <span>Conflict Resolution</span>
+        <span>Leadership</span>
+        <span>Project Prioritization</span>
+    </div>
+
+    <!-- Services Section -->
+    <h3 class="section-heading">💼 Services</h3>
+    <div class="card-deck mt-4">
+        <div class="card p-4">
+            <div class="card-body">
+                <h5 class="card-title">🌐 Web Development</h5>
+                <p class="card-text">Responsive and modern websites using ASP.NET MVC, C#, SQL Server & modern frameworks.</p>
             </div>
         </div>
-    </div>
-
-    <div class="row mb-5">
-        <div class="col-md-12">
-            <h3 class="mb-3">💼 Services</h3>
-            <div class="card-deck">
-                <div class="card shadow-sm p-3 mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Web Development</h5>
-                        <p class="card-text">I build responsive and modern websites using ASP.NET MVC, C#, and SQL Server.</p>
-                    </div>
-                </div>
-                <div class="card shadow-sm p-3 mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Database Design</h5>
-                        <p class="card-text">I design efficient databases, write complex queries, and optimize performance.</p>
-                    </div>
-                </div>
-                <div class="card shadow-sm p-3 mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">AI/ML Projects</h5>
-                        <p class="card-text">I work on basic Machine Learning models and integrate them into applications.</p>
-                    </div>
-                </div>
+        <div class="card p-4">
+            <div class="card-body">
+                <h5 class="card-title">🗄 Database Design</h5>
+                <p class="card-text">Efficient databases, optimized queries & scalable architecture design for businesses.</p>
+            </div>
+        </div>
+        <div class="card p-4">
+            <div class="card-body">
+                <h5 class="card-title">🤖 AI / ML Projects</h5>
+                <p class="card-text">Machine Learning models & AI-powered applications with Python & AI tools.</p>
             </div>
         </div>
     </div>

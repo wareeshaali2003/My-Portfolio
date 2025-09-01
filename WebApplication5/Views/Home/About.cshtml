@@ -4,85 +4,334 @@
 
 <style>
     body {
-        background: linear-gradient(135deg, #f9f9f9, #e3f2fd);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
     }
 
+    /* Hero About Container */
     .about-container {
-        background: #fff;
-        border-radius: 20px;
-        padding: 40px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        transition: 0.3s ease;
+        background: rgba(20, 22, 25, 0.85);
+        backdrop-filter: blur(14px);
+        border-radius: 25px;
+        padding: 60px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.75);
+        position: relative;
+        overflow: hidden;
+        color: #fff;
     }
 
-        .about-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        /* Glowing Background Elements */
+        .about-container::before,
+        .about-container::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: float 10s infinite alternate ease-in-out;
         }
 
+        .about-container::before {
+            width: 280px;
+            height: 280px;
+            background: #00c6ff;
+            top: -60px;
+            left: -100px;
+        }
+
+        .about-container::after {
+            width: 330px;
+            height: 330px;
+            background: #ffd700;
+            bottom: -100px;
+            right: -120px;
+        }
+
+    @@keyframes float {
+        from {
+            transform: translateY(0);
+        }
+
+        to {
+            transform: translateY(-30px);
+        }
+    }
+
+    /* Profile Picture */
     .profile-pic {
-        width: 250px;
-        height: 250px;
-        object-fit: cover;
+        width: 220px;
+        height: 220px;
         border-radius: 50%;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        transition: 0.3s ease;
+        object-fit: cover;
+        border: 5px solid #f8f9fa;
+        box-shadow: 0 0 25px rgba(0, 198, 255, 0.7);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
         .profile-pic:hover {
-            transform: scale(1.05);
+            transform: scale(1.07);
+            box-shadow: 0 0 35px rgba(0, 198, 255, 0.9);
         }
 
-    h1 {
+    /* Headings Gradient */
+    .section-heading {
+        font-size: 1.8rem;
         font-weight: bold;
-        color: #0d47a1;
+        font-style: italic;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        display: inline-block;
+        background: #00d4ff;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
+    /* Bio Text */
     .lead {
         font-size: 1.2rem;
-        color: #555;
+        line-height: 1.8;
+        color: #adb5bd;
     }
 
-    hr {
-        border-top: 2px solid #0d47a1;
-        width: 60px;
-        margin-left: 0;
+    .highlight {
+        background: #00c6ff;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #212529;
     }
 
-    
+    /* Skills & Hobbies Pills */
+    .skills span {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        color: #f8f9fa;
+        padding: 8px 14px;
+        margin: 6px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+    /*.skills span:hover {
+        transform: translateY(-3px) scale(1.05);
+        background: linear-gradient(90deg, #00c6ff, #ffd700);
+        color: #212529;
+        font-weight: bold;
+    }*/
+    .btn-light {
+        background: #00c6ff;
+        border: none;
+        color: #212529;
+        box-shadow: 0 4px 15px rgba(0, 198, 255, 0.5);
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
 
+        .btn-light:hover {
+            background: #33d6ff;
+            transform: translateY(-3px);
+        }
+
+    .about-heading {
+        font-size: 2.5rem; /* Thodi badi heading */
+        font-weight: 700; /* Bold text */
+        color: #00d4ff; /* Stylish blue */
+        text-transform: uppercase; /* SAB CAPITAL mai (portfolio style) */
+        letter-spacing: 2px; /* Har letter ke beech gap */
+        position: relative;
+        display: inline-block;
+        padding-bottom: 8px;
+    }
+
+        /* Neeche underline effect */
+        .about-heading::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, #00c6ff, #ffd700);
+            border-radius: 2px;
+        }
+
+
+    /* Resume Button */
+    .btn-resume {
+        background: linear-gradient(90deg, #00c6ff, #0d6efd);
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 198, 255, 0.5);
+    }
+
+        .btn-resume:hover {
+            background: linear-gradient(90deg, #ffd700, #ff6f00);
+            transform: scale(1.07);
+            color: #212529;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);
+        }
+
+
+    /* Chatbot Styling */
+    #chatbot {
+        margin-top: 50px;
+        background: rgba(20, 22, 25, 0.9);
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 6px 25px rgba(0, 198, 255, 0.5);
+    }
+
+    #chat-window {
+        height: 250px;
+        overflow-y: auto;
+        background: #111;
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+        color: #fff;
+    }
+
+        #chat-window p {
+            margin: 5px 0;
+        }
+
+    #userInput {
+        width: 85%;
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+    }
+
+    #chatbot button {
+        padding: 10px 50px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #00c6ff, #0d6efd);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        #chatbot button:hover {
+            background: linear-gradient(90deg, #ffd700, #ff6f00);
+            color: #212529;
         }
 </style>
 
 <div class="container mt-5">
     <div class="row align-items-center about-container">
-        <!-- Left: Profile Picture -->
+
+        <!-- Profile Picture -->
         <div class="col-md-4 text-center mb-4 mb-md-0">
-            <img src="~/Content/picture/images.jfif" class="profile-pic" alt="Profile Picture" />
+            <a href="@Url.Action("Index", "Home")">
+                <img src="~/Content/picture/new.jfif" loading="lazy" class="profile-pic" alt="Profile Picture" />
+            </a>
         </div>
 
-        <!-- Right: About Me Text -->
+
+        <!-- Profile Info -->
         <div class="col-md-8">
-            <h1 class="mb-3">About Me</h1>
+            <h1 class="mb-3 about-heading">👩‍💻 About Me</h1>
+
+
             <p class="lead">
-                Hello! I'm <b>Syeda Wareesha Ali</b>, an aspiring software developer.
+                Hi, I’m <b>Syeda Wareesha Ali</b> — an ambitious <span class="highlight">Software Engineer</span> from Karachi, Pakistan.
+                I love turning ideas into reality through clean, scalable and user-friendly applications.
+                My journey in tech is fueled by curiosity, creativity, and a passion for solving problems that truly matter. 🚀
             </p>
             <hr />
 
-            <p>
-                I am passionate about crafting high-quality web applications using modern
-                technologies. My core skills include <b>ASP.NET MVC, C#, SQL Server, and Bootstrap</b>.
-                I believe in continuous learning and love tackling real-world challenges with code.
-            </p>
+       
+
+
+            <!-- Resume -->
             <div class="mt-4">
-                <a href="~/Content/Resume/WareeshaResume .pdf" target="_blank" class="btn btn-primary">
+                <a href="~/Content/Resume/WareeshaResume .pdf" target="_blank" class="btn btn-resume">
                     📄 View My Resume
                 </a>
             </div>
-           
         </div>
     </div>
 </div>
+<!-- 🚀 Chatbot Section -->
+<!-- 🚀 Chatbot Section -->
+<div id="chatbot" class="mt-5">
+    <h2 class="section-heading">💬 Ask Me Anything About Wareesha </h2>
 
+    <!-- Chat window with styling -->
+    <div id="chat-window" style="border:1px solid #ccc; padding:10px; width:100%; height:200px; overflow-y:auto;">
+    </div>
 
+    <!-- User input -->
+    <input type="text" id="userInput" placeholder="Ask me something..." />
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    // Page load hone par welcome message
+    window.onload = function () {
+        let chatWindow = document.getElementById("chat-window");
+
+        let botMessage = document.createElement("div");
+        botMessage.style.background = "#f1f1f1";
+        botMessage.style.padding = "8px";
+        botMessage.style.margin = "5px";
+        botMessage.style.borderRadius = "5px";
+        botMessage.style.color = "black"; // ✅ text color black
+        botMessage.innerText = "👋 Hello! Welcome to Wareesha's portfolio. How can I help you?";
+
+        chatWindow.appendChild(botMessage);
+    };
+
+    // Function to send message
+    function sendMessage() {
+        var userMessage = document.getElementById("userInput").value;
+
+        fetch('/Chat/GetAnswer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userMessage })
+        })
+            .then(response => response.json())
+            .then(data => {
+                let chatWindow = document.getElementById("chat-window");
+
+                // User message bubble
+                let userMsg = document.createElement("div");
+                userMsg.style.background = "#d1e7dd";
+                userMsg.style.padding = "8px";
+                userMsg.style.margin = "5px";
+                userMsg.style.borderRadius = "5px";
+                userMsg.style.textAlign = "right";
+                userMsg.style.color = "black"; // ✅ text color black
+                userMsg.innerText = "You: " + userMessage;
+                chatWindow.appendChild(userMsg);
+
+                // Bot reply bubble
+                let botMsg = document.createElement("div");
+                botMsg.style.background = "#f1f1f1";
+                botMsg.style.padding = "8px";
+                botMsg.style.margin = "5px";
+                botMsg.style.borderRadius = "5px";
+                botMsg.style.color = "black"; // ✅ text color black
+                botMsg.innerText = "Bot: " + data.reply;
+                chatWindow.appendChild(botMsg);
+
+                document.getElementById("userInput").value = "";
+                chatWindow.scrollTop = chatWindow.scrollHeight; // auto-scroll
+            });
+    }
+</script>

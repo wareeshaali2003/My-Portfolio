@@ -3,30 +3,151 @@
     ViewBag.Title = "Contact";
 }
 
-<div class="text-center mb-5">
-    <h2 class="display-5 fw-bold text-primary">📩 Get in Touch</h2>
-    <p class="text-muted">Feel free to drop me a message anytime!</p>
-</div>
+<head>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-heading {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+            .contact-heading::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 4px;
+                width: 100%;
+                background: linear-gradient(90deg, #00c6ff, #ffd700);
+                border-radius: 2px;
+            }
+
+
+
+
+        @@keyframes glow {
+            from {
+                text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+            }
+
+            to {
+                text-shadow: 0 0 20px #007bff, 0 0 40px #007bff;
+            }
+        }
+
+        /* Card Style */
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease-in-out;
+        }
+
+            .contact-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0px 12px 35px rgba(0, 212, 255, 0.4);
+            }
+
+        /* Input Fields */
+        .form-control {
+            border-radius: 12px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+            .form-control:focus {
+                border-color: #00d4ff;
+                box-shadow: 0 0 10px #00d4ff;
+            }
+
+            .form-control::placeholder {
+                color: #bbb;
+            }
+
+        /* Button */
+        .btn-primary {
+            border-radius: 12px;
+            background: linear-gradient(90deg, #00d4ff, #007bff);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 15px #00d4ff;
+            }
+
+        /* Success Message */
+        #successMessage {
+            margin-top: 20px;
+            padding: 15px;
+            font-weight: bold;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #28a745, #218838);
+            color: #fff;
+            text-align: center;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
 
 <div class="container">
+
+
+    <div class="text-center mb-5">
+        <h2 class="contact-heading">📩 Get in Touch</h2>
+        <p class="text-muted" style="font-size:1.1rem;">Let's build something amazing together!</p>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow-lg rounded-3 p-4">
+            <div class="contact-card">
                 @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "contactForm" }))
                 {
                     <div class="form-group mb-3">
                         @Html.LabelFor(m => m.Name, new { @class = "fw-bold" })
-                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter your full name" })
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter your full name", id = "Name" })
                     </div>
 
                     <div class="form-group mb-3">
                         @Html.LabelFor(m => m.Email, new { @class = "fw-bold" })
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email address" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email address", id = "Email" })
                     </div>
 
                     <div class="form-group mb-3">
                         @Html.LabelFor(m => m.Message, new { @class = "fw-bold" })
-                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder = "Write your message...", rows = "5" })
+                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder = "Write your message...", rows = "5", id = "Message" })
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100 btn-lg shadow-sm">
@@ -37,7 +158,7 @@
 
             @if (ViewBag.Response != null)
             {
-                <div id="successMessage" class="alert alert-success mt-4 shadow-sm animate__animated animate__fadeIn">
+                <div id="successMessage">
                     ✅ @ViewBag.Response
                 </div>
             }
@@ -45,62 +166,45 @@
     </div>
 </div>
 
-<style>
-    body {
-        background: #f9fafc;
-    }
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    .card {
-        border: none;
-        background: #fff;
-        transition: transform 0.2s ease-in-out;
-    }
+        let name = document.getElementById("Name").value.trim();
+        let email = document.getElementById("Email").value.trim();
+        let message = document.getElementById("Message").value.trim();
 
-        .card:hover {
-            transform: translateY(-5px);
+        if (name === "" || email === "" || message === "") {
+            alert("⚠️ Please fill in all fields before submitting.");
+            return;
         }
 
-    .form-control {
-        border-radius: 10px;
-        padding: 12px;
-    }
+        let nameRegex = /^[A-Za-z\s]+$/;
+        if (!nameRegex.test(name)) {
+            alert("⚠️ Name should only contain letters (no numbers or special characters).");
+            return;
+        }
 
-    .btn-primary {
-        border-radius: 10px;
-    }
+        if (!email.includes("@@") || !email.endsWith(".com")) {
+            alert("⚠️ Please enter a valid email address (must contain @@ and end with .com)");
+            return;
+        }
 
-    #successMessage {
-        font-weight: bold;
-        border-radius: 8px;
-    }
-</style>
+        // Clear form fields
+        document.getElementById("Name").value = "";
+        document.getElementById("Email").value = "";
+        document.getElementById("Message").value = "";
 
-<script>
-   document.getElementById("contactForm").addEventListener("submit", function (event) {
-    let name = document.getElementById("Name").value.trim();
-    let email = document.getElementById("Email").value.trim();
-    let message = document.getElementById("Message").value.trim();
+        // Show success message dynamically
+        let successBox = document.createElement("div");
+        successBox.id = "successMessage";
+        successBox.innerHTML = "✅ Your message was sent successfully!";
+        document.querySelector(".contact-card").appendChild(successBox);
 
-    if (name === "" || email === "" || message === "") {
-        event.preventDefault();
-        alert("⚠️ Please fill in all fields before submitting.");
-        return;
-    }
-
-    let nameRegex = /^[A-Za-z\s]+$/;
-    if (!nameRegex.test(name)) {
-        event.preventDefault();
-        alert("⚠️ Name should only contain letters (no numbers or special characters).");
-        return;
-    }
-
-    if (!email.includes('@@') || !email.endsWith('.com')) {
-        event.preventDefault();
-        alert('⚠️ Please enter a valid email address (must contain @@ and end with .com)');
-        return;
-    }
-});
-
-
+        // Auto hide message after 5 sec
+        setTimeout(() => {
+            successBox.remove();
+        }, 5000);
+    });
 </script>
 
